@@ -21,7 +21,11 @@ for i = 1:event_num
         gt_bbx = gt_bbx_list{j};
         pred_info = pred_list{j};
         keep_index = sub_gt_list{j};
-        count_face = count_face + length(keep_index);
+        % img_list{j}
+        % size(keep_index)
+        % length(keep_index)
+        count_face = count_face + size(keep_index, 1);
+        % count_face = count_face + length(keep_index)
         if isempty(gt_bbx) || isempty(pred_info)
             continue;
         end
