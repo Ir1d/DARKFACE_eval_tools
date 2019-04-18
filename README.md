@@ -12,6 +12,8 @@ Please check http://www.ug2challenge.org/rules19_t2.html
 
 https://hub.docker.com/r/scaffrey/eval_tools
 
+**Please note that the eval_tools is expected to work with octave, there might be bugs when running from MATLAB**
+
 ```
 docker pull scaffrey/eval_tools
 ```
