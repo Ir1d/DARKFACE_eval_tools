@@ -21,11 +21,7 @@ for i = 1:event_num
         gt_bbx = gt_bbx_list{j};
         pred_info = pred_list{j};
         keep_index = sub_gt_list{j};
-        % img_list{j}
-        % size(keep_index)
-        % length(keep_index)
         count_face = count_face + size(keep_index, 1);
-        % count_face = count_face + length(keep_index)
         if isempty(gt_bbx) || isempty(pred_info)
             continue;
         end
@@ -50,10 +46,6 @@ function [pred_recall,proposal_list] = image_evaluation(pred_info, gt_bbx, IoU_t
     recall_list = zeros(size(gt_bbx,1),1);
     proposal_list = zeros(size(pred_info,1),1);
     proposal_list = proposal_list + 1;
-    pred_info(:,3) = pred_info(:,1) + pred_info(:,3);
-    pred_info(:,4) = pred_info(:,2) + pred_info(:,4);
-    gt_bbx(:,3) = gt_bbx(:,1) + gt_bbx(:,3);
-    gt_bbx(:,4) = gt_bbx(:,2) + gt_bbx(:,4);
     for h = 1:size(pred_info,1)
         overlap_list = boxoverlap(gt_bbx, pred_info(h,1:4));
         [max_overlap, idx] = max(overlap_list);

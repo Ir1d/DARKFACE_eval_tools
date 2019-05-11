@@ -24,7 +24,11 @@ parfor i = 1:event_num
             continue;
         end
         score_list = pred_list{j}(:,5);
-        norm_score_list = (score_list - min_score)/(max_score - min_score);
+        if max_score != min_score
+            norm_score_list = (score_list - min_score)/(max_score - min_score);
+        else
+            norm_score_list = (score_list - (min_score - 1));
+        end
         pred_list{j}(:,5) = norm_score_list;
     end
     norm_pred_list{i} = pred_list;

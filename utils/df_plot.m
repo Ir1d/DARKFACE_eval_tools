@@ -13,12 +13,12 @@ recall = cell(model_num,1);
 name_list = cell(model_num,1);
 ap_list = zeros(model_num,1);
 for j = 1:model_num
-    disp(sprintf('%s/%s/%s.mat',dir_ext, model_name{j}, model_name{j}));
     load(sprintf('%s/%s/%s.mat',dir_ext, model_name{j}, model_name{j}));
     propose{j} = pr_curve(:,2);
     recall{j} = pr_curve(:,1);
     ap = VOCap(propose{j},recall{j});
     ap_list(j) = ap;
+    disp(sprintf('%s ap: %f', model_name{j}, ap));
     ap = num2str(ap);
     if length(ap) < 5
         name_list{j} = [model_name{j} '-' ap];
